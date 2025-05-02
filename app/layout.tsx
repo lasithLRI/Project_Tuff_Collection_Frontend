@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Funnel_Sans, Geist, Geist_Mono } from "next/font/google";
+import { Funnel_Sans,Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+
 
 const funelSans = Funnel_Sans({
   variable: "--font-funnel-sans",
@@ -50,6 +47,4 @@ export default function RootLayout({
     </html>
   );
 }
-function localFont(arg0: { src: string; display: string; variable: string }) {
-  throw new Error("Function not implemented.");
-}
+
