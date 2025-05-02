@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="w-2/3 h-auto">
         <div className="w-full h-20 flex items-center justify-between">
           <div className="w-auto h-full items-end flex">
-            <p className="font-[trajan] font-light text-gray-700 text-6xl">Tuff</p>
+          <p className={`${trajan.className} font-light text-gray-700 text-6xl`}>Tuff</p>
           </div>
           <div className="w-auto h-full  flex items-center">
             <div className="w-20 h-10  mr-2">
