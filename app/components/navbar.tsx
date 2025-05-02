@@ -2,14 +2,6 @@ import localFont from "next/font/local";
 import NavMenu from "./nav_menu";
 import NavBottomButtons from "./nav_bottom_buttons";
 
-const roman = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Roman.woff",
-      weight: "400",
-    },
-  ],
-});
 
 const trajan = localFont({
   src: [
