@@ -1,6 +1,6 @@
 export default function NavBottomButtons() {
   return (
-    <div className="w-full h-16  flex items-center justify-end pb-2">
+    <div className="w-full h-16 items-center justify-end pb-2 lg:flex hidden">
       <div className="w-auto h-auto  flex">
         <button className="flex border border-gray-400 py-1 px-4 rounded-lg hover:border-black font-bold text-xl items-center hover:cursor-pointer">
           <i className="ri-heart-line"></i>

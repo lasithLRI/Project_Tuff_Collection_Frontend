@@ -4,7 +4,7 @@ import NavItemD from "./nav_item_d";
 
 export default function NavMenu() {
   return (
-    <div className="w-[calc(100%-8rem)] h-8 ml-auto flex items-center">
+    <div className="w-[calc(100%-64px)] h-8 ml-auto lg:flex items-center hidden ">
       <ul className="flex items-center justify-between w-full h-full">
         
         <NavItemD name="WOMEN" />
