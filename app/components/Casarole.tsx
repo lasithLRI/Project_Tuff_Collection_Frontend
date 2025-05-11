@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 export default function Casarole() {
 
     const [currentSlide, setCurrentSlide] = useState(0);
+    
 
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
