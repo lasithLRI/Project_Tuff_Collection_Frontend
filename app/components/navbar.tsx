@@ -5,6 +5,7 @@ import NavMenu from "./nav_menu";
 import NavBottomButtons from "./nav_bottom_buttons";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuthContext } from '@asgardeo/auth-react';
 
 
 const trajan = localFont({
@@ -21,6 +22,8 @@ export default function Navbar() {
   const router = useRouter()
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const { signIn} = useAuthContext();
 
   const toggleMenu = () => {
     setIsOpen(prev => !prev);
@@ -48,7 +51,7 @@ export default function Navbar() {
           </div>
           <div className="w-auto h-full  flex items-center">
             <div className="w-20 h-10  mr-2">
-              <button className="w-full h-full font-bold text-gray-400 cursor-pointer text-sm">Signup</button>
+              <button className="w-full h-full font-bold text-gray-400 cursor-pointer text-sm" onClick={()=>signIn()}>Sign</button>
             </div>
             <div className="w-48 h-10 border-gray-400 border flex rounded-lg">
               <button

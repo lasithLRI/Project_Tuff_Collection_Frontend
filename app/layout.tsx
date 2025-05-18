@@ -1,8 +1,13 @@
+
+
 import type { Metadata } from "next";
 import { Funnel_Sans,Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import ClientAuthProvider from "@/pages/_app";
+
+
 
 
 
@@ -37,12 +42,16 @@ export default function RootLayout({
       <body
         className={`${funelSans.variable} ${geistMono.variable} antialiased`}
       >
+
+        <ClientAuthProvider>
+        
         <div className="w-full h-auto bg-white">
           <Navbar></Navbar>
           {children}
 
           <Footer></Footer>
         </div>
+       </ClientAuthProvider>
       </body>
     </html>
   );
