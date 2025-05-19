@@ -1,22 +1,27 @@
-
+'use client';
 
 import { useAuthContext } from "@asgardeo/auth-react";
-import { Component, useEffect } from "react";
+import { Component, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export const withAuth = (Component:React.ComponentType)=>{
     return function ProtectedComponent(props:any){
 
-        const { state, signIn } = useAuthContext();
-        const router = useRouter();
+        const { state, signIn,getAccessToken } = useAuthContext();
+
+        const [token, setToken] = useState<string | null>(null);
 
         useEffect(()=>{
             if (!state.isLoading && !state.isAuthenticated) {
                 signIn();
             }
+
+            if (state.isAuthenticated) {
+                getAccessToken().then(setToken).catch(console.error);
+            }
         },[state.isAuthenticated, state.isLoading]);
 
-        if (state.isLoading) {
+        if (state.isLoading || !token) {
             return <div>Loading...</div>;
         }
 
