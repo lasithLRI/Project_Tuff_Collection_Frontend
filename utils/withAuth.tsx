@@ -16,6 +16,8 @@ export const withAuth = (Component:React.ComponentType)=>{
                 signIn();
             }
 
+            console.log("ASGARDEO CLIENT ID:", process.env.NEXT_PUBLIC_ASGARDEO_CLIENT_ID);
+
             
         },[state.isAuthenticated, state.isLoading]);
 

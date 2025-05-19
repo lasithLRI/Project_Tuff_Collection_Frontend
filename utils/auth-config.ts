@@ -8,6 +8,8 @@ export const authConfig:AuthReactConfig = {
   baseUrl: baseUrl,
   storage: "webWorker", 
 
+  
+
   endpoints: {
     authorizationEndpoint: "/oauth2/authorize",
     tokenEndpoint: "/oauth2/token",
@@ -18,6 +20,7 @@ export const authConfig:AuthReactConfig = {
     endSessionEndpoint: "/oidc/logout",
     issuer: baseUrl,
   }
+  
 };
 
 export default authConfig;
