@@ -9,30 +9,25 @@ export const withAuth = (Component:React.ComponentType)=>{
 
         const { state, signIn,getAccessToken } = useAuthContext();
 
-        const [token, setToken] = useState<string | null>(null);
+        const router = useRouter();
+
 
         useEffect(()=>{
             if (!state.isLoading && !state.isAuthenticated) {
                 signIn();
             }
+        },[state.isAuthenticated, state.isLoading]);
+      
 
-            console.log("ASGARDEO CLIENT ID:", process.env.NEXT_PUBLIC_ASGARDEO_CLIENT_ID);
-
-            
+        useEffect(()=>{
+            if (state.isAuthenticated) {
+                getAccessToken().then((token)=>console.log(token)).catch(console.error);
+            }
         },[state.isAuthenticated, state.isLoading]);
 
-        useEffect(() => {
-            if (state.isAuthenticated) {
-                getAccessToken()
-                .then((token) => {
-                    console.log("✅ Access Token:", token); // 👈 this should now show up
-                    setToken(token);
-                })
-                .catch(console.error);
-            }
-        }, [state.isAuthenticated]);
+        
+        if (state.isLoading) {
 
-        if (state.isLoading || !token) {
             return <div>Loading...</div>;
         }
 
