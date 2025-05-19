@@ -1,26 +1,14 @@
-import { AuthReactConfig } from "@asgardeo/auth-react";
-const baseUrl = "https://api.asgardeo.io/t/tuff";
+console.log("🔍 ASGARDEO CONFIG VALIDATION:");
+console.log("✅ Client ID:", process.env.NEXT_PUBLIC_ASGARDEO_CLIENT_ID);
+console.log("✅ Base URL:", process.env.NEXT_PUBLIC_ASGARDEO_BASE_URL);
+console.log("✅ Redirect URI:", process.env.NEXT_PUBLIC_ASGARDEO_REDIRECT_URI);
+console.log("✅ Logout Redirect URI:", process.env.NEXT_PUBLIC_ASGARDEO_LOGOUT_REDIRECT_URI);
 
-export const authConfig:AuthReactConfig = {
-  signInRedirectURL: "https://tuffcollection.netlify.app/",
-  signOutRedirectURL: "https://tuffcollection.netlify.app/",
+const authConfig = {
+  signInRedirectURL: process.env.NEXT_PUBLIC_ASGARDEO_REDIRECT_URI!,
+  signOutRedirectURL: process.env.NEXT_PUBLIC_ASGARDEO_LOGOUT_REDIRECT_URI!,
   clientID: process.env.NEXT_PUBLIC_ASGARDEO_CLIENT_ID!,
-  baseUrl: baseUrl,
-  storage: "webWorker", 
-
-  
-
-  endpoints: {
-    authorizationEndpoint: "/oauth2/authorize",
-    tokenEndpoint: "/oauth2/token",
-    userinfoEndpoint: "/oauth2/userinfo",
-    jwksUri: "/oauth2/jwks",
-    revocationEndpoint: "/oauth2/revoke",
-    checkSessionIframe: "/oidc/checksession",
-    endSessionEndpoint: "/oidc/logout",
-    issuer: baseUrl,
-  }
-  
+  baseUrl: process.env.NEXT_PUBLIC_ASGARDEO_BASE_URL!
 };
 
 export default authConfig;
