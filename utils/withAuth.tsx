@@ -7,12 +7,18 @@ import { useRouter } from "next/navigation";
 export const withAuth = (Component:React.ComponentType)=>{
     return function ProtectedComponent(props:any){
 
-        const { state, signIn } = useAuthContext();
+        const { state, signIn,getAccessToken } = useAuthContext();
         const router = useRouter();
 
         useEffect(()=>{
             if (!state.isLoading && !state.isAuthenticated) {
                 signIn();
+            }
+        },[state.isAuthenticated, state.isLoading]);
+
+        useEffect(()=>{
+            if (state.isAuthenticated) {
+                getAccessToken().then((token)=>console.log(token)).catch(console.error);
             }
         },[state.isAuthenticated, state.isLoading]);
 

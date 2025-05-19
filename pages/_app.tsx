@@ -9,7 +9,7 @@ const AuthProvider = dynamic(
   { ssr: false }
 );
 
-export default function ClientAuthProvider({ children }: { children: React.ReactNode }) {
+export default function ClientAuthProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <AuthProvider config={authConfig}>
       {children}
