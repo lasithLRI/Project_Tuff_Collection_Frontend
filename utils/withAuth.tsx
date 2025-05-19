@@ -1,7 +1,7 @@
-
+'use client';
 
 import { useAuthContext } from "@asgardeo/auth-react";
-import { Component, useEffect } from "react";
+import { Component, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 
@@ -9,13 +9,21 @@ export const withAuth = (Component:React.ComponentType)=>{
     return function ProtectedComponent(props:any){
 
         const { state, signIn,getAccessToken } = useAuthContext();
+
         const router = useRouter();
+
+        const [token, setToken] = useState<string | null>(null);
 
         useEffect(()=>{
             if (!state.isLoading && !state.isAuthenticated) {
                 signIn();
             }
+
+            console.log("ASGARDEO CLIENT ID:", process.env.NEXT_PUBLIC_ASGARDEO_CLIENT_ID);
+
+            
         },[state.isAuthenticated, state.isLoading]);
+
 
         useEffect(()=>{
             if (state.isAuthenticated) {
@@ -26,6 +34,7 @@ export const withAuth = (Component:React.ComponentType)=>{
         
 
         if (state.isLoading) {
+
             return <div>Loading...</div>;
         }
 

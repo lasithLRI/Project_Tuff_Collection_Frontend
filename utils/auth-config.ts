@@ -1,3 +1,4 @@
+
 const baseUrl = process.env.NEXT_PUBLIC_ASGARDEO_BASE_URL!;
 
 const authConfig = {
@@ -5,6 +6,7 @@ const authConfig = {
   signOutRedirectURL: process.env.NEXT_PUBLIC_ASGARDEO_LOGOUT_REDIRECT_URI!,
   clientID: process.env.NEXT_PUBLIC_ASGARDEO_CLIENT_ID!,
   baseUrl: process.env.NEXT_PUBLIC_ASGARDEO_BASE_URL!,
+
 
   endpoints: {
     authorizationEndpoint: "/oauth2/authorize",
@@ -14,6 +16,7 @@ const authConfig = {
     logoutEndpoint: "/oidc/logout",
     revocationEndpoint: "/oauth2/revoke",
     wellKnownEndpoint: "/oauth2/oidcdiscovery",
+    revocationEndpoint: "/oauth2/revoke",
     checkSessionIframe: "/oidc/checksession",
     endSessionEndpoint: "/oidc/logout",
     issuer: baseUrl,
