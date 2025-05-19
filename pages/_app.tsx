@@ -10,8 +10,12 @@ const AuthProvider = dynamic(
 );
 
 export default function ClientAuthProvider({ children }: Readonly<{ children: React.ReactNode }>) {
+
+console.log("AuthProvider Config:", authConfig);
+
   return (
     <AuthProvider config={authConfig}>
+      
       {children}
     </AuthProvider>
   );
