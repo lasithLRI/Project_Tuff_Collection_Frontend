@@ -16,10 +16,19 @@ export const withAuth = (Component:React.ComponentType)=>{
                 signIn();
             }
 
-            if (state.isAuthenticated) {
-                getAccessToken().then(setToken).catch(console.error);
-            }
+            
         },[state.isAuthenticated, state.isLoading]);
+
+        useEffect(() => {
+            if (state.isAuthenticated) {
+                getAccessToken()
+                .then((token) => {
+                    console.log("✅ Access Token:", token); // 👈 this should now show up
+                    setToken(token);
+                })
+                .catch(console.error);
+            }
+        }, [state.isAuthenticated]);
 
         if (state.isLoading || !token) {
             return <div>Loading...</div>;
